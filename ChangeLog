@@ -1,0 +1,1274 @@
+2014-02-24 15:26 -0500  Sam Steingold  <sds@podval.org>  (cc0047e4f957)
+
+	* src/port/sys.lisp:
+	((setf getenv)) [sbcl]: setenv is only present when +sb-posix
+
+2014-02-24 15:25 -0500  Sam Steingold  <sds@podval.org>  (3649972dd4c4)
+
+	* src/port/ext.lisp:
+	(quit) [sbcl]: use sb-ext:exit instead of sb-ext:quit
+
+2013-06-19 15:55 -0400  Sam Steingold  <sds@podval.org>  (330e98ecac75)
+
+	* src/port/mop.lisp:
+	test for :no-defstruct-mop in :cl-user to avoid package lock errors
+
+2012-07-22 12:30 -0400  Sam Steingold  <sds@podval.org>  (cce1f11ae4db)
+
+	* src/cllib/cllib.asd, src/cllib/cllib.html, src/cllib/cllib.system,
+	src/cllib/csv.lisp, src/port/mop.lisp:
+	check whether DEFSTRUCT supports MOP
+
+2011-11-23 22:16 -0500  Sam Steingold  <sds@podval.org>  (58a6236b998e)
+
+	* src/port/sys.lisp:
+	((setf getenv)) [sbcl]: implement using `sb-posix:setenv'
+
+2011-11-23 20:47 -0500  Sam Steingold  <sds@podval.org>  (a65bae7fb375)
+
+	* src/port/sys.lisp:
+	(arglist) [sbcl]: `function-arglist' is obsoleted by `function-
+	lambda-list'
+
+2011-07-13 09:48 -0400  Sam Steingold  <sds@gnu.org>  (429fd22f8c82)
+
+	* src/port/path.lisp:
+	(probe-directory) [sbcl]: use either SB-IMPL::NATIVE-FILE-KIND or
+	SB-UNIX:UNIX-FILE-KIND and fall back to PROBE-FILE Reported by
+	willh@willh.plus.com
+
+2011-03-09 11:20 -0500  Sam Steingold  <sds@gnu.org>  (f82359595a40)
+
+	* bin/run-lisp, clocc.lisp, src/cllib/Makefile,
+	src/cllib/animals.lisp, src/cllib/autoload.lisp,
+	src/cllib/base.lisp, src/cllib/base64.lisp, src/cllib/bayes.lisp,
+	src/cllib/bookmark.lisp, src/cllib/card.lisp, src/cllib/check.lisp,
+	src/cllib/clhs.lisp, src/cllib/cllib.asd, src/cllib/cllib.html,
+	src/cllib/cllib.system, src/cllib/closio.lisp, src/cllib/csv.lisp,
+	src/cllib/cvs.lisp, src/cllib/data.lisp, src/cllib/date.lisp,
+	src/cllib/datedl.lisp, src/cllib/doall.lisp, src/cllib/elisp.lisp,
+	src/cllib/fileio.lisp, src/cllib/fin.lisp, src/cllib/geo.lisp,
+	src/cllib/getopt.lisp, src/cllib/gnuplot.lisp, src/cllib/gq.lisp,
+	src/cllib/grepfin.lisp, src/cllib/h2lisp.lisp, src/cllib/html.lisp,
+	src/cllib/htmlgen.lisp, src/cllib/inspect.lisp, src/cllib/iter.lisp,
+	src/cllib/laser.lisp, src/cllib/lift.lisp, src/cllib/list.lisp,
+	src/cllib/log.lisp, src/cllib/math.lisp, src/cllib/matrix.lisp,
+	src/cllib/miscprint.lisp, src/cllib/munkres.lisp,
+	src/cllib/ocaml.lisp, src/cllib/octave.lisp, src/cllib/prompt.lisp,
+	src/cllib/rng.lisp, src/cllib/rpm.lisp, src/cllib/server.lisp,
+	src/cllib/simple.lisp, src/cllib/sorted.lisp, src/cllib/stat.lisp,
+	src/cllib/string.lisp, src/cllib/symb.lisp, src/cllib/tests.lisp,
+	src/cllib/tilsla.lisp, src/cllib/url.lisp, src/cllib/withtype.lisp,
+	src/cllib/xml.lisp, src/ext/sequences/seq.system, src/port/ext.lisp,
+	src/port/gray.lisp, src/port/mop.lisp, src/port/net.lisp,
+	src/port/path.lisp, src/port/port.asd, src/port/port.html,
+	src/port/port.system, src/port/proc.lisp, src/port/shell.lisp,
+	src/port/sys.lisp, src/screamer/Makefile:
+	remove $Id$ & $Source$ from my files
+
+2010-08-19 17:06 +0000  sds  <sds>  (d7a3c88b9b80)
+
+	* src/port/ext.lisp, src/port/gray.lisp, src/port/net.lisp,
+	src/port/shell.lisp, src/port/sys.lisp:
+	clisp: remove support for pre-LISP=CL [2.26 (2001-05-23)] releases
+
+2010-08-19 16:51 +0000  sds  <sds>  (b4ba6ee53e8c)
+
+	* src/port/path.lisp:
+	clisp: remove support for pre-LISP=CL [2.26 (2001-05-23)] releases
+
+2010-08-19 16:50 +0000  sds  <sds>  (287829b8eb9b)
+
+	* src/port/path.lisp:
+	mkdir, rmdir [clisp]: avoid deprecated DELETE-DIR & MAKE-DIR
+
+2010-07-16 17:42 +0000  sds  <sds>  (ce091d65cd97)
+
+	* src/port/sys.lisp:
+	(setf getenv): when val is NIL, pass it as is to allow removing
+	variables
+
+2009-03-11 15:51 +0000  sds  <sds>  (8e3972374fab)
+
+	* src/port/path.lisp:
+	(logical-host-p): support allegro (from Andrew Philpot
+	<philpot@isi.edu>)
+
+2008-10-20 19:54 +0000  sds  <sds>  (bdfa559a8d94)
+
+	* src/port/net.lisp:
+	(ipaddr-closure): add
+
+2008-09-22 14:46 +0000  sds  <sds>  (13d86f8cfba2)
+
+	* src/port/ext.lisp:
+	(*lock-package-bindings*): replaces *LOCK-PACKAGE-SAVED-VALUE*
+	(package-lock-bind, package-lock-unbind): manipulate it (get-
+	package-lock, set-package-lock): new exported functions (unlock-
+	package, restore-package-lock): use them
+
+2008-08-04 18:10 +0000  sds  <sds>  (5e45064bcd6c)
+
+	* src/port/sys.lisp:
+	(structure-keyword-constructor, structure-copier, structure-
+	predicate): use find-symbol instead of intern
+
+2008-08-04 18:04 +0000  sds  <sds>  (29145eb7923f)
+
+	* src/port/sys.lisp:
+	fix a typo: symbol-string --> symbol-name
+
+2008-07-30 17:56 +0000  sds  <sds>  (04535a023719)
+
+	* src/port/net.lisp:
+	(resolve-host-ipaddr): support (and sbcl sb-bsd-sockets) From Robin
+	Lee Powell <rlpowell@digitalkingdom.org>
+
+2008-05-18 04:03 +0000  sds  <sds>  (cb65476e493c)
+
+	* src/port/sys.lisp:
+	clisp now exports defstruct mop from EXT
+
+2007-11-06 20:52 +0000  sds  <sds>  (54fd68539af4)
+
+	* src/port/sys.lisp:
+	(structure-slots, structure-keyword-constructor, structure-boa-
+	constructors) (structure-copier, structure-predicate): export
+
+2007-11-06 19:26 +0000  sds  <sds>  (ae5c3f217072)
+
+	* src/port/ext.lisp:
+	(string-tokens): accept :package
+
+2007-09-21 16:49 +0000  sds  <sds>  (189fd3f53ed5)
+
+	* src/cllib/animals.lisp, src/cllib/autoload.lisp,
+	src/cllib/base.lisp, src/cllib/base64.lisp, src/cllib/bookmark.lisp,
+	src/cllib/card.lisp, src/cllib/check.lisp, src/cllib/clhs.lisp,
+	src/cllib/closio.lisp, src/cllib/csv.lisp, src/cllib/cvs.lisp,
+	src/cllib/data.lisp, src/cllib/date.lisp, src/cllib/datedl.lisp,
+	src/cllib/doall.lisp, src/cllib/elisp.lisp, src/cllib/fileio.lisp,
+	src/cllib/fin.lisp, src/cllib/geo.lisp, src/cllib/getopt.lisp,
+	src/cllib/gnuplot.lisp, src/cllib/gq.lisp, src/cllib/h2lisp.lisp,
+	src/cllib/html.lisp, src/cllib/htmlgen.lisp, src/cllib/inspect.lisp,
+	src/cllib/iter.lisp, src/cllib/laser.lisp, src/cllib/lift.lisp,
+	src/cllib/list.lisp, src/cllib/log.lisp, src/cllib/math.lisp,
+	src/cllib/matrix.lisp, src/cllib/miscprint.lisp,
+	src/cllib/munkres.lisp, src/cllib/ocaml.lisp, src/cllib/octave.lisp,
+	src/cllib/prompt.lisp, src/cllib/rng.lisp, src/cllib/rpm.lisp,
+	src/cllib/server.lisp, src/cllib/simple.lisp, src/cllib/sorted.lisp,
+	src/cllib/stat.lisp, src/cllib/string.lisp, src/cllib/symb.lisp,
+	src/cllib/tests.lisp, src/cllib/tilsla.lisp, src/cllib/url.lisp,
+	src/cllib/withtype.lisp, src/cllib/xml.lisp, src/port/gray.lisp,
+	src/port/mop.lisp, src/port/net.lisp, src/port/path.lisp,
+	src/port/proc.lisp, src/port/shell.lisp, src/port/sys.lisp:
+	(eval-when): use ANSI CL (keyword) situations
+
+2007-09-21 15:56 +0000  sds  <sds>  (b8735eec0683)
+
+	* src/port/sys.lisp:
+	(structure-boa-constructors): avoid an "unused variable" warning
+
+2007-06-25 20:57 +0000  sds  <sds>  (c959f6e748b3)
+
+	* src/port/mop.lisp:
+	fix allegro read-time conditions
+
+2006-11-28 05:14 +0000  sds  <sds>  (f59eb2ce3d62)
+
+	* src/cllib/ocaml.lisp, src/port/mop.lisp:
+	oops
+
+2006-11-28 05:02 +0000  sds  <sds>  (724f5e26b937)
+
+	* src/port/mop.lisp: new file.
+	* src/port/Makefile, src/port/mop.lisp, src/port/port.html,
+	src/port/port.system:
+	added mop.lisp: Meta-Object Protocol
+
+2006-11-28 05:02 +0000  sds  <sds>  (a5d13cf0fde2)
+
+	* src/port/sys.lisp:
+	(structure-keyword-constructor) [clisp]: use sys::structure-
+	kconstructor
+
+2006-11-22 02:13 +0000  sds  <sds>  (89b9eeeffbdf)
+
+	* src/port/sys.lisp:
+	structure MOP
+
+2006-06-22 20:33 +0000  sds  <sds>  (b3fa85137034)
+
+	* src/port/net.lisp:
+	(servent): proto is a keyword
+
+2006-06-22 20:32 +0000  sds  <sds>  (5f414dedc642)
+
+	* src/port/net.lisp:
+	[sbcl]: support :sb-bsd-sockets Thanks to Philippe Brochard
+	<hocwp@free.fr>
+
+2006-04-07 22:09 +0000  sds  <sds>  (6127312b36f1)
+
+	* src/port/sys.lisp:
+	(arglist) [sbcl]: require :sb-introspect at top-level, not inside
+	the function
+
+2006-04-07 21:59 +0000  sds  <sds>  (126b29d6cd8b)
+
+	* src/port/ext.lisp:
+	(quit) [sbcl]: :unix-code --> :unix-status
+
+2006-03-06 17:20 +0000  sds  <sds>  (9bdd1ee61b39)
+
+	* src/port/ext.lisp:
+	(string-tokens): accept :end
+
+2005-12-25 23:53 +0000  sds  <sds>  (55a7b0a234e3)
+
+	* src/port/net.lisp:
+	(open-socket-server) [lispworks]: use start-up-server instead of
+	start-up-server-and-mp because it is also available on win32
+
+2005-11-14 23:36 +0000  sds  <sds>  (e4897243602b)
+
+	* src/port/ext.lisp:
+	(with-gensyms): more expressive lambda list
+
+2005-11-08 20:52 +0000  sds  <sds>  (62b4e25dd6c4)
+
+	* src/port/sys.lisp:
+	(variable-not-special): handle funbound symbol
+
+2005-11-08 15:18 +0000  sds  <sds>  (6905882ee1a8)
+
+	* src/port/sys.lisp:
+	(variable-not-special): new function
+
+2005-10-09 03:57 +0000  sds  <sds>  (64f11b9fd91f)
+
+	* src/port/shell.lisp:
+	(close-pipe): close constituent streams
+
+2005-08-05 19:42 +0000  sds  <sds>  (5c5cbdbba7ae)
+
+	* src/port/sys.lisp:
+	(compiled-file-p): pass NIL #\a to PEEK-CHAR
+
+2005-08-05 18:31 +0000  sds  <sds>  (ef6115ebfbc4)
+
+	* src/port/sys.lisp:
+	(compiled-file-p) [clisp]: fixed empty file handling; optimized
+
+2005-06-24 16:16 +0000  sds  <sds>  (1f3270cf2518)
+
+	* src/port/net.lisp:
+	(socket) [CMU|SCL]: define to STREAM Reported by David Tolpin
+	<dvd@davidashen.net>
+
+2005-06-14 16:35 +0000  sds  <sds>  (80048893a3cf)
+
+	* src/port/ext.lisp:
+	removed the defpackage hack; use #: instead
+
+2005-05-23 15:18 +0000  sds  <sds>  (6bf653348579)
+
+	* src/port/proc.lisp:
+	openmcl patch from David Tolpin
+
+2005-05-23 15:12 +0000  sds  <sds>  (500e58537afe)
+
+	* src/port/net.lisp:
+	(open-socket): fixed a typo assume that mcl is the same as openmcl
+
+2005-05-09 13:47 +0000  sds  <sds>  (e83dc46ec1d3)
+
+	* src/port/path.lisp:
+	(logical-host-p) [sbcl]: *LOGICAL-HOSTS* is in SB-IMPL
+
+2005-05-04 14:25 +0000  airfoyle  <airfoyle>  (548565f461c7)
+
+	* src/port/ext.lisp:
+	Keep ext.lisp from necessarily defining :port package with upper-
+	case name
+
+2005-01-27 23:16 +0000  sds  <sds>  (0d882de86e33)
+
+	* src/port/net.lisp:
+	[cmu scl]: (require :simple-streams) (socket) [cmu scl]: STREAM
+	:SOCKET-SIMPLE-STREAM (open-socket) [cmu scl]: create a STREAM
+	:SOCKET-SIMPLE-STREAM (set-socket-stream-format) [cmu scl]: assume
+	bivalent stream
+
+2005-01-27 23:03 +0000  sds  <sds>  (17c854bab02a)
+
+	* src/cllib/animals.lisp, src/cllib/autoload.lisp,
+	src/cllib/base.lisp, src/cllib/card.lisp, src/cllib/check.lisp,
+	src/cllib/clhs.lisp, src/cllib/closio.lisp, src/cllib/csv.lisp,
+	src/cllib/cvs.lisp, src/cllib/date.lisp, src/cllib/datedl.lisp,
+	src/cllib/fileio.lisp, src/cllib/fin.lisp, src/cllib/geo.lisp,
+	src/cllib/getopt.lisp, src/cllib/gq.lisp, src/cllib/h2lisp.lisp,
+	src/cllib/htmlgen.lisp, src/cllib/inspect.lisp, src/cllib/iter.lisp,
+	src/cllib/laser.lisp, src/cllib/list.lisp, src/cllib/log.lisp,
+	src/cllib/math.lisp, src/cllib/octave.lisp, src/cllib/prompt.lisp,
+	src/cllib/rpm.lisp, src/cllib/server.lisp, src/cllib/sorted.lisp,
+	src/cllib/string.lisp, src/cllib/tests.lisp, src/cllib/tilsla.lisp,
+	src/cllib/url.lisp, src/cllib/withtype.lisp, src/cllib/xml.lisp,
+	src/port/ext.lisp, src/port/net.lisp, src/port/sys.lisp:
+	updated (c)year
+
+2005-01-26 19:32 +0000  sds  <sds>  (156d8d174db1)
+
+	* src/port/net.lisp:
+	(set-socket-stream-format): new function
+
+2004-12-23 14:59 +0000  sds  <sds>  (ca72365bd8de)
+
+	* src/port/sys.lisp:
+	CMUCL DEFSTRUCT hack: INTERN before EXPORT
+
+2004-12-23 14:50 +0000  sds  <sds>  (8a4f6bcad7a7)
+
+	* src/port/sys.lisp:
+	CMUCL DEFSTRUCT hack: redefine DEFSTRUCT instead of defining a
+	global MAKE-LOAD-FORM method on STRUCTURE-OBJECTs
+
+2004-12-06 15:03 +0000  sds  <sds>  (729fbca5d35d)
+
+	* src/port/sys.lisp:
+	(arglist) [SBCL]: require :SB-INTROSPECT from Alexey Dejneka via
+	Szymon
+
+2004-12-05 15:38 +0000  sds  <sds>  (25b525727cf1)
+
+	* src/port/sys.lisp:
+	(arglist) [SBCL]: SB-KERNEL:%SIMPLE-FUN-ARGLIST returns a list
+	Reported by Szymon
+
+2004-12-05 00:01 +0000  sds  <sds>  (aff2b0cf58e1)
+
+	* src/port/sys.lisp:
+	(arglist) [SBCL]: same as CMU/SCL Reported by Szymon
+
+2004-12-01 17:44 +0000  sds  <sds>  (7462a170899c)
+
+	* src/port/sys.lisp:
+	(arglist) [CMU, SCL]: handle generic functions with PCL:GENERIC-
+	FUNCTION-LAMBDA-LIST
+
+2004-11-30 19:52 +0000  sds  <sds>  (6c768389c09f)
+
+	* src/defsystem-3.x/defsystem.lisp, src/port/sys.lisp:
+	(compiled-file-p) [CLISP]: use PEEK-CHAR+READ instead of READ-FROM-
+	STRING+READ-LINE
+
+2004-11-30 18:54 +0000  sds  <sds>  (0176f24b3717)
+
+	* src/defsystem-3.x/defsystem.lisp, src/port/sys.lisp:
+	(compiled-file-p) [CLISP]: fixed for CLISP 2.34
+
+2004-11-30 18:14 +0000  sds  <sds>  (1e88c09a2f64)
+
+	* src/port/sys.lisp:
+	(compiled-file-p): new function
+
+2004-11-09 16:31 +0000  sds  <sds>  (83f2e004fdf7)
+
+	* src/port/net.lisp:
+	(socket-service-port): do not modify immutable strings (SYMBOL-NAME)
+
+2004-10-18 23:03 +0000  sds  <sds>  (5700ddf051e0)
+
+	* src/port/path.lisp:
+	(safe-truename): TRUENAME cannot return NIL
+
+2004-10-18 15:17 +0000  sds  <sds>  (ce12379b74ed)
+
+	* src/port/ext.lisp:
+	(compose-safe): new macro
+
+2004-08-02 23:09 +0000  sds  <sds>  (751efe59377f)
+
+	* src/port/net.lisp:
+	(socket, open-socket, socket-server, open-socket-server, socket-
+	accept) (socket-server-close): support ABCL
+
+2004-08-02 22:44 +0000  sds  <sds>  (9f5590a6c4e3)
+
+	* src/port/ext.lisp:
+	(gc, quit): support ABCL
+
+2004-07-29 20:34 +0000  sds  <sds>  (24ff47b2417d)
+
+	* src/port/path.lisp:
+	comment typo
+
+2004-07-16 16:30 +0000  sds  <sds>  (989c223d7db7)
+
+	* src/port/path.lisp:
+	(logical-host-p): new function
+
+2004-05-18 21:20 +0000  sds  <sds>  (67ccbc666755)
+
+	* src/port/sys.lisp:
+	support more MOPish CLISP (a temporary hack for the CLISP
+	development version)
+
+2004-04-09 20:15 +0000  sds  <sds>  (3402c840176e)
+
+	* src/port/net.lisp:
+	(open-socket): suport GCL
+
+2003-09-25 03:47 +0000  rtoy  <rtoy>  (a3c31fe37411)
+
+	* src/port/gray.lisp:
+	Use (require 'gray-streams) if the version of CMUCL supports package
+	locks. (This does the necessary package-lock stuff to load Gray
+	streams without errors.)
+
+2003-07-25 13:05 +0000  sds  <sds>  (47286a0560e0)
+
+	* src/port/sys.lisp:
+	(getenv) [CLISP]: use EXT:GETENV (not SYS)
+
+2003-06-07 22:01 +0000  sds  <sds>  (d41e9645036f)
+
+	* src/port/ext.lisp, src/port/gray.lisp, src/port/net.lisp,
+	src/port/path.lisp, src/port/proc.lisp, src/port/shell.lisp,
+	src/port/sys.lisp:
+	update (C) year
+
+2003-06-07 21:59 +0000  sds  <sds>  (8cc05811e346)
+
+	* src/port/ext.lisp:
+	export CODE slot accessors
+
+2003-06-06 02:05 +0000  sds  <sds>  (34e9c70fbb10)
+
+	* src/port/path.lisp:
+	(un-unspecific): new function: in lispworks, TRUENAME replaces NIL
+	components with :UNSPECIFIC (pathname-ensure-name, probe-directory):
+	use it (safe-truename): new function
+
+2003-05-16 16:12 +0000  sds  <sds>  (0773009bff54)
+
+	* src/port/sys.lisp:
+	support SCL (from Ram Krishnan <rkris@kriyative.net>)
+
+2003-05-16 16:07 +0000  sds  <sds>  (e564f6052a5f)
+
+	* src/port/proc.lisp:
+	support SCL and OpenMCL (from Ram Krishnan <rkris@kriyative.net>)
+
+2003-05-16 15:56 +0000  sds  <sds>  (583ced430eb1)
+
+	* src/port/net.lisp:
+	support SCL and OpenMCL (from Ram Krishnan <rkris@kriyative.net>)
+
+2003-05-16 15:41 +0000  sds  <sds>  (93aed31ea8f2)
+
+	* src/port/gray.lisp:
+	support SCL and OpenMCL (from Ram Krishnan <rkris@kriyative.net>)
+
+2003-03-12 18:06 +0000  sds  <sds>  (66aa216a4d20)
+
+	* src/port/proc.lisp:
+	(make-lock, with-lock) [Genera]: implemented From Rusty Johnson
+	<rustyjohnson@users.sourceforge.net>
+
+2003-02-17 22:53 +0000  sds  <sds>  (15315f83c916)
+
+	* src/port/net.lisp:
+	(network, timeout): avoid using `slot-boundp' on conditions
+
+2003-02-17 22:52 +0000  sds  <sds>  (bb22232dc1dc)
+
+	* src/port/ext.lisp:
+	(code): avoid using `slot-boundp' on conditions
+
+2003-02-14 17:23 +0000  sds  <sds>  (37e4e3aa60c9)
+
+	* src/port/proc.lisp:
+	(process-yield) [Genera, Lucid]: implemented From Rusty Johnson
+	<rustyjohnson@users.sf.net>
+
+2003-01-21 17:43 +0000  sds  <sds>  (839a58fac0ab)
+
+	* src/port/net.lisp:
+	(socket-service-port): service name may contain #\/ (FreeBSD)
+	Reported by "Walter C. Pelissero" <walter@pelissero.org>
+
+2002-12-15 14:45 +0000  sds  <sds>  (53d62d7713a0)
+
+	* src/port/ext.lisp:
+	(unlock-package, restore-package-lock): support ECL From Juan Jose
+	Garcia Ripoll <jlr@mpq.mpg.de>
+
+2002-11-30 22:31 +0000  sds  <sds>  (9c129f7929e3)
+
+	* src/port/shell.lisp:
+	(run-prog): use REMOVE-PLIST instead of REMF
+
+2002-11-30 22:30 +0000  sds  <sds>  (0fb8504eb3f8)
+
+	* src/port/ext.lisp:
+	(remove-plist): added
+
+2002-11-28 20:24 +0000  sds  <sds>  (cfe85c19bba8)
+
+	* src/port/ext.lisp:
+	(with-gensyms): append the variable name to GENSYM prefix
+
+2002-10-27 17:01 +0000  kevinrosenberg  <kevinrosenberg>  (c83e1e1556e2)
+
+	* src/port/port.system, src/port/sys.lisp:
+	Push keyword rather than string on ext:*environment-list* for cmucl.
+	See http://bugs.debian.org/166616
+
+2002-07-21 15:23 +0000  sds  <sds>  (4d4317303fd6)
+
+	* src/port/sys.lisp:
+	(getenv) [mcl]: support From John Wiseman <jjwiseman@yahoo.com>
+
+2002-07-21 15:22 +0000  sds  <sds>  (be44cbae4c12)
+
+	* src/port/net.lisp:
+	(open-socket) [mcl]: support From John Wiseman <jjwiseman@yahoo.com>
+
+2002-06-20 13:24 +0000  sds  <sds>  (ab5b925c54d7)
+
+	* src/port/net.lisp:
+	(socket-host/port) [lispworks]: fixed a typo From Dave Fox
+	<davef@xanalys.com>
+
+2002-06-18 14:01 +0000  sds  <sds>  (facce5ba51a9)
+
+	* src/port/ext.lisp:
+	(required-argument): reverted the last patch: return type NIL means
+	non-returning function
+
+2002-06-17 21:38 +0000  sds  <sds>  (18a54e528a49)
+
+	* src/port/path.lisp:
+	(probe-directory) [generic]: re-use `path'
+
+2002-06-17 20:10 +0000  sds  <sds>  (80a657d25057)
+
+	* src/port/ext.lisp:
+	(required-argument) [-cmu]: fixed declaration From Dave Fox
+	<davef@xanalys.com>
+
+2002-06-05 14:08 +0000  sds  <sds>  (7aa97dbb150d)
+
+	* src/port/path.lisp:
+	(load-logical-host-def): code now corresponds to the docs Reported
+	by Hallvard B. Furuseth <h.b.furuseth@usit.uio.no>
+
+2002-06-05 14:07 +0000  sds  <sds>  (bb964d0ff492)
+
+	* src/port/net.lisp:
+	(socket, socket-server, wait-for-stream, open-unix-socket): made
+	read conditionals more consistent Reported by Hallvard B. Furuseth
+	<h.b.furuseth@usit.uio.no>
+
+2002-05-02 13:38 +0000  sds  <sds>  (21d0c3d6f6de)
+
+	* src/port/ext.lisp:
+	(unlock-package, restore-package-lock) [lispworks]: :load-toplevel
+	too
+
+2002-04-25 18:02 +0000  sds  <sds>  (c88a8f51affd)
+
+	* src/port/net.lisp:
+	(socket-accept) [net.sbcl.sockets]: wait now works (wait-for-stream)
+	[sbcl]: separate support for net.sbcl.sockets and db-sockets (open-
+	unix-socket) [sbcl]: support net.sbcl.sockets From Martin Atzmueller
+	<martin@atzmueller.net>
+
+2002-04-21 19:56 +0000  sds  <sds>  (6b3d17559177)
+
+	* src/port/ext.lisp:
+	(unlock-package, restore-package-lock): new macros
+
+2002-03-30 04:18 +0000  sds  <sds>  (a4c5c7bf6e68)
+
+	* src/port/net.lisp:
+	Support SBCL/DB-SOCKETS (vector-to-ipaddr, ipaddr-to-vector) [sbcl
+	db-sockets]: new functions (resolve-host-ipaddr, socket, open-
+	socket, socket-host/port) (socket-server, open-socket-server,
+	socket-accept, socket-server-close) (socket-server-host/port):
+	support SBCL/DB-SOCKETS (wait-for-stream): support SBCL (open-unix-
+	socket): support Allegro & SBCL/DB-SOCKETS From Peter Van Eynde
+	<pvaneynd@debian.org>
+
+2002-03-30 00:51 +0000  sds  <sds>  (2a315c6a3bff)
+
+	* src/port/sys.lisp:
+	(variable-special-p) [sbcl]: SB-WALKER:VAR-GLOBALLY-SPECIAL-P
+	instead of SB-WALKER:VARIABLE-GLOBALLY-SPECIAL-P (arglist): SB-
+	KERNEL:%SIMPLE-FUN-ARGLIST instead of SB-KERNEL:%FUNCTION-ARGLIST
+	From Peter Van Eynde <pvaneynd@debian.org>
+
+2002-03-26 23:53 +0000  sds  <sds>  (34e5be4ac60c)
+
+	* src/port/net.lisp:
+	(socket-accept) [cmu]: :BUFFERING depends on BIN, like in OPEN-
+	SOCKET
+
+2002-02-06 19:01 +0000  sds  <sds>  (9b65a18ed621)
+
+	* src/port/gray.lisp:
+	avoid interning a symbol in an implementation-internal package
+
+2002-01-26 19:29 +0000  sds  <sds>  (a087b350095d)
+
+	* src/port/sys.lisp:
+	(tz->string): accept an optional second arg LONG to allow output in
+	the <http://www.w3.org/TR/NOTE-datetime> format
+
+2002-01-23 14:31 +0000  sds  <sds>  (d6d28694a152)
+
+	* src/port/sys.lisp:
+	(current-time): TZ is a RATIONAL, not a FIXNUM Reported by "Greg
+	Harvey" <gharvey@cs.mun.ca>
+
+2002-01-22 18:37 +0000  stig  <stig>  (beea3f895d3d)
+
+	* src/port/path.lisp:
+	s/#+cmucl/#+cmu/ on DEFULAT-DIRECTORY function
+
+2002-01-07 18:54 +0000  sds  <sds>  (015144a8412b)
+
+	* src/port/net.lisp:
+	(open-socket) [CMUCL]: use :FULL buffering for BIN sockets Reported
+	by Peter Van Eynde <pvaneynd@debian.org>
+
+2001-12-04 22:15 +0000  sds  <sds>  (9e11e40d3eb1)
+
+	* src/port/net.lisp:
+	(net-path): renamed from `path'
+
+2001-11-09 21:43 +0000  sds  <sds>  (a819d0bc2c65)
+
+	* src/port/Makefile, src/port/port.system, src/port/proc.lisp:
+	eol fix
+
+2001-11-09 21:22 +0000  sds  <sds>  (2149b8571ad5)
+
+	* src/port/path.lisp:
+	(load-logical-host-def): new internal function (*logical-hosts-
+	definitions*): new user variable (load-logical-host): new exported
+	function, a replacement for `load-logical-pathname-translations'
+
+2001-11-09 19:24 +0000  sds  <sds>  (c1068bdb935a)
+
+	* src/port/sys.lisp:
+	comment
+
+2001-11-09 19:24 +0000  sds  <sds>  (d701687379c6)
+
+	* src/port/port.system, src/port/sys.lisp:
+	sys depends on path
+
+2001-11-09 19:15 +0000  sds  <sds>  (29dc216f374d)
+
+	* src/port/path.lisp: new file.
+	* src/port/Makefile, src/port/path.lisp, src/port/port.html,
+	src/port/port.system, src/port/sys.lisp:
+	extracted pathname-related functions from sys.lisp
+
+2001-11-02 22:30 +0000  sds  <sds>  (ce913bc6776d)
+
+	* src/port/ext.lisp, src/port/gray.lisp, src/port/net.lisp,
+	src/port/proc.lisp, src/port/shell.lisp, src/port/sys.lisp:
+	prefix module names with `port-'
+
+2001-10-11 21:28 +0000  sds  <sds>  (dd8a5f2e155e)
+
+	* src/port/sys.lisp:
+	(probe-directory): fold the name.type into directory
+
+2001-09-26 15:51 +0000  sds  <sds>  (07e88f830c41)
+
+	* src/port/sys.lisp:
+	(string->tz): new function (tz->string): additional dst arg
+	(current-time): reflect that
+
+2001-09-26 15:10 +0000  sds  <sds>  (b27841b88601)
+
+	* src/port/sys.lisp:
+	(+time-zones+): DST in GMT is called BST (British Summer Time)
+
+2001-09-09 20:41 +0000  sds  <sds>  (91101e9e81a0)
+
+	* src/port/net.lisp:
+	(path): new network condition (404&c)
+
+2001-09-09 19:55 +0000  sds  <sds>  (97c98812f26e)
+
+	* src/port/gray.lisp, src/port/net.lisp, src/port/shell.lisp,
+	src/port/sys.lisp:
+	[Alexey Dejneka <adejneka@comail.ru>] support SBCL
+
+2001-07-16 16:13 +0000  sds  <sds>  (7e89cabe989d)
+
+	* src/port/net.lisp:
+	(open-socket, socket-accept): CMUCL: specify :buffering :line
+	Reported by Janne Rinta-Manty <rintaman@cs.Helsinki.FI>
+
+2001-07-09 19:45 +0000  sds  <sds>  (4b317384ce67)
+
+	* src/port/net.lisp:
+	(open-unix-socket): use OPEN on non-CMUCL lisps
+
+2001-07-09 19:42 +0000  sds  <sds>  (cc2943cedd0a)
+
+	* src/port/net.lisp:
+	(open-unix-socket, wait-for-stream): new functions
+
+2001-07-09 17:13 +0000  sds  <sds>  (cf705ecccbc2)
+
+	* src/port/shell.lisp:
+	(pipe-input): CMUCL: redirect stdio to the terminal
+
+2001-06-29 18:03 +0000  sds  <sds>  (773f8748d784)
+
+	* src/port/sys.lisp:
+	(setf getenv): new function
+
+2001-06-25 19:54 +0000  sds  <sds>  (90174eb07849)
+
+	* src/port/sys.lisp:
+	require :ole on #+(and allegro mswindows)
+
+2001-06-11 19:41 +0000  sds  <sds>  (8e9408135917)
+
+	* src/port/net.lisp:
+	(socket-service-port): use NIL as EOF-value in READ-LINE
+
+2001-06-11 19:33 +0000  sds  <sds>  (dec4c30e5b63)
+
+	* src/port/ext.lisp:
+	(+eof+): made the value more readable
+
+2001-06-09 20:07 +0000  sds  <sds>  (9ad4ed6eb7db)
+
+	* src/port/ext.lisp:
+	(string-tokens): pass to FIND-PACKAGE a keyword instead of a string
+
+2001-06-08 22:48 +0000  sds  <sds>  (571ea5a93f32)
+
+	* src/port/ext.lisp:
+	(gc, quit): support SBCL From Stig E Sandoe <stig@ii.uib.no>
+
+2001-06-08 21:58 +0000  sds  <sds>  (2c48258250bf)
+
+	* src/port/ext.lisp:
+	(eof-p): use `peek-char' instead of `read-char'/`unread-char'
+
+2001-06-08 21:43 +0000  sds  <sds>  (a9ce2a650af9)
+
+	* src/port/ext.lisp:
+	(defconst): use DEFCONSTANT when TYPE is EQL-comparable, and DEFVAR
+	otherwise (ANSI 3.1.2.1.1.3 Constant Variables)
+
+2001-06-08 14:13 +0000  sds  <sds>  (7e8b57c8985f)
+
+	* src/port/proc.lisp:
+	(get-lock): CMU: mp::lock-wait requires 2 args Reported by Juan
+	Hierro <hierro@ideafix.litec.csic.es>
+
+2001-05-21 16:04 +0000  sds  <sds>  (6c7583e3f470)
+
+	* src/port/sys.lisp:
+	(probe-directory): CLISP: drop the second value
+
+2001-05-18 16:04 +0000  sds  <sds>  (7b376305535d)
+
+	* src/port/sys.lisp:
+	(probe-directory): CLISP: enclose in `ignore-errors' CMUCL: call
+	`namestring' (thanks to Liam Healy) generic: fixed a typo
+
+2001-05-07 21:02 +0000  sds  <sds>  (8c38f4af55aa)
+
+	* src/port/gray.lisp:
+	FUNDAMENTAL-STREAM is defined in PCL, while FUNDAMENTAL-INPUT-
+	STREAM is defined in GRAY (thanks to Raymond Toy)
+
+2001-05-07 16:26 +0000  sds  <sds>  (3869e12fcf1f)
+
+	* src/port/gray.lisp:
+	load CMUCL "gray-streams-library" when EXT:FUNDAMENTAL-STREAM does
+	not name a class
+
+2001-04-25 21:44 +0000  sds  <sds>  (16a018969079)
+
+	* src/port/shell.lisp:
+	(run-prog): in CLISP/lisp=cl, `ext:run-program' accepts :wait
+
+2001-04-25 18:57 +0000  sds  <sds>  (afeb089a0dc6)
+
+	* src/port/shell.lisp:
+	(run-prog): quote arguments passed to shell via format
+
+2001-04-11 14:40 +0000  sds  <sds>  (3225ee1e669d)
+
+	* bin/run-lisp, src/cllib/fileio.lisp, src/cllib/math.lisp,
+	src/cllib/octave.lisp, src/cllib/prompt.lisp, src/cllib/rpm.lisp,
+	src/defsystem-3.x/defsystem.lisp, src/port/ext.lisp,
+	src/port/gray.lisp, src/port/net.lisp, src/port/shell.lisp,
+	src/port/sys.lisp, src/tools/metering/metering.lisp:
+	updated for CLISP #+LISP=CL
+
+2001-04-03 18:49 +0000  sds  <sds>  (92dcd0808e5b)
+
+	* src/port/ext.lisp:
+	(code, case-error, not-implemented): added :documentation
+
+2001-03-21 00:31 +0000  sds  <sds>  (d1eb5a577c78)
+
+	* src/port/sys.lisp:
+	(rmdir): LispWorks: check whether `lw:delete-directory' is `fboundp'
+
+2001-03-19 16:03 +0000  sds  <sds>  (8d3e30f2c62e)
+
+	* src/port/sys.lisp:
+	removed the last patch
+
+2001-03-17 22:50 +0000  liam  <liam>  (2f92751136be)
+
+	* src/port/sys.lisp:
+	Removed LispWorks from rmdir; function lw:delete-directory is not
+	defined. Export mkdir, rmdir.
+
+2001-03-17 19:56 +0000  sds  <sds>  (04fec968ed2e)
+
+	* src/port/net.lisp:
+	(socket-accept): ACL5 cannot change socket format
+
+2001-03-13 23:09 +0000  sds  <sds>  (a8a16b6742a7)
+
+	* src/port/sys.lisp:
+	(mkdir): fixed arg name
+
+2001-03-13 23:09 +0000  sds  <sds>  (053e85ea9cd7)
+
+	* src/port/ext.lisp:
+	(required-argument): export on non-CMUCL platforms
+
+2001-03-07 20:39 +0000  sds  <sds>  (1caa67cc9585)
+
+	* src/port/sys.lisp:
+	(probe-directory): fixed for LispWorks (thanks to David E. Young)
+	(mkdir, rmdir): new functions
+
+2001-02-23 23:29 +0000  sds  <sds>  (767e40c2700a)
+
+	* src/port/ext.lisp:
+	(required-argument): fix import/export for CMUCL
+
+2001-02-07 20:27 +0000  sds  <sds>  (d1f5b276e5c5)
+
+	* src/port/ext.lisp:
+	(string-tokens): when `max' is nil, use `read-from-string' on the
+	whole string
+
+2001-02-06 20:09 +0000  sds  <sds>  (c2f0fead4441)
+
+	* src/port/ext.lisp:
+	(defpackage "PORT"): use string!
+
+2001-02-06 19:58 +0000  sds  <sds>  (811034b1f6aa)
+
+	* src/port/ext.lisp:
+	(defpackage port): use strings instead of symbols
+
+2001-01-23 15:54 +0000  sds  <sds>  (07d70853f512)
+
+	* src/port/net.lisp:
+	(socket-host/port): lispworks: use `comm:socket-stream-address'
+	instead of the non-existant `comm:socket-stream-local-address'
+
+2001-01-08 22:14 +0000  sds  <sds>  (772d432924d4)
+
+	* src/port/ext.lisp:
+	updated the (C) statement
+
+2001-01-08 20:39 +0000  sds  <sds>  (a76af8639806)
+
+	* src/port/ext.lisp:
+	(required-argument): new function (from CMUCL)
+
+2000-12-03 06:01 +0000  sds  <sds>  (738a8e4af573)
+
+	* src/port/net.lisp:
+	require :sys because of `getenv'
+
+2000-11-16 18:34 +0000  sds  <sds>  (eed79e75269b)
+
+	* src/cllib/gnuplot.lisp, src/cllib/gq.lisp, src/cllib/octave.lisp,
+	src/port/net.lisp:
+	Allegro uses feature :mswindows, not :win32
+
+2000-11-16 18:31 +0000  sds  <sds>  (2922b5750bca)
+
+	* src/port/sys.lisp:
+	(sysinfo): ported to the Allegro/win32 registry interface
+
+2000-11-15 17:56 +0000  sds  <sds>  (a38f44975e7d)
+
+	* src/port/sys.lisp:
+	(class-slot-*, variable-special-p): works with ACL6 now
+
+2000-11-15 17:29 +0000  sds  <sds>  (4281181629fa)
+
+	* src/port/net.lisp:
+	(socket-accept): ignore `bin' in ACL6
+
+2000-11-13 02:01 +0000  sds  <sds>  (cfc492354bca)
+
+	* src/port/net.lisp:
+	(socket-accept): in ALC6 all sockets are bivalent
+
+2000-11-10 19:49 +0000  sds  <sds>  (3bbf897a46d3)
+
+	* src/port/shell.lisp:
+	(run-prog): wait defaults to T; it now works on LispWorks and
+	CLISP/UNIX too
+
+2000-09-04 19:29 +0000  sds  <sds>  (0ea79eefa39b)
+
+	* src/port/shell.lisp:
+	(run-prog): CMUCL: forgot #'
+
+2000-08-19 21:32 +0000  sds  <sds>  (acce3108c4d0)
+
+	* src/port/sys.lisp:
+	(slot-one-initarg): do not use slot-name
+
+2000-08-14 19:25 +0000  sds  <sds>  (adc84035b8d4)
+
+	* src/port/sys.lisp:
+	(class-slot-initargs): do not take `car' of `slot-one-initarg'
+
+2000-08-14 16:24 +0000  sds  <sds>  (b656db21a3f9)
+
+	* src/port/sys.lisp:
+	(class-slot-initargs): new function; export it
+
+2000-08-07 19:00 +0000  sds  <sds>  (b3ad92396216)
+
+	* src/port/sys.lisp:
+	(class-slot-list): accept anything as the first arg, not just a
+	struct or a CLOS class instance
+
+2000-07-31 17:54 +0000  sds  <sds>  (4eabf4125fe9)
+
+	* src/port/sys.lisp:
+	(variable-special-p, arglist, class-slot-list): support Lucid
+
+2000-07-31 17:53 +0000  sds  <sds>  (bb69ba847ee0)
+
+	* src/port/ext.lisp:
+	(gc, quit): support Lucid
+
+2000-07-31 17:52 +0000  sds  <sds>  (a1fa6ae84cd3)
+
+	* src/port/shell.lisp:
+	(run-prog, pipe-output, pipe-input): support Lucid
+
+2000-07-31 17:51 +0000  sds  <sds>  (b2237e8577fa)
+
+	* src/port/proc.lisp:
+	(with-lock): support Lucid
+
+2000-07-20 18:20 +0000  sds  <sds>  (72fca3a8a90f)
+
+	* src/port/net.lisp:
+	(open-socket-server): CMUCL: use 0 when port is nil (socket-server-
+	host/port): CMUCL: use `ext:get-socket-host-and-port'
+
+2000-05-31 20:17 +0000  sds  <sds>  (69efdb0abf44)
+
+	* src/port/sys.lisp:
+	(pathname-ensure-name): new function
+
+2000-05-23 16:57 +0000  sds  <sds>  (befaac701cdb)
+
+	* src/port/net.lisp:
+	(socket-string): use `print-unreadable-object'
+
+2000-05-22 19:18 +0000  sds  <sds>  (950e3ad98dd9)
+
+	* src/port/net.lisp:
+	(socket-string): typo
+
+2000-05-22 19:06 +0000  sds  <sds>  (cfc1ebf0e151)
+
+	* src/port/net.lisp:
+	(host/port-string, socket-server-string): removed (socket-string):
+	print both local and peer
+
+2000-05-22 17:51 +0000  sds  <sds>  (dd7db16e18f1)
+
+	* src/port/sys.lisp:
+	(finalize): new function (arglist): support CormanLisp
+
+2000-05-18 15:57 +0000  sds  <sds>  (744e98e41701)
+
+	* src/port/net.lisp:
+	(host/port-string): new function, "0.0.0.0"->"127.0.0.1" (socket-
+	string, socket-server-string): use it
+
+2000-05-15 20:58 +0000  sds  <sds>  (af1911d40042)
+
+	* src/port/net.lisp:
+	(socket-accept): CLISP: fixed for null wait
+
+2000-05-15 14:19 +0000  sds  <sds>  (4b621d494c1f)
+
+	* src/port/proc.lisp:
+	(with-lock): ignore `lock' when no threads
+
+2000-05-12 18:14 +0000  sds  <sds>  (02b2f6307941)
+
+	* src/port/proc.lisp:
+	(with-timeout): added missing commas
+
+2000-05-12 18:13 +0000  sds  <sds>  (3dd3a263e114)
+
+	* src/port/ext.lisp:
+	(defconst): drop `eval-when'
+
+2000-05-09 18:52 +0000  sds  <sds>  (50737a1493a8)
+
+	* src/port/net.lisp:
+	(socket-host/port): return both remote and local host&port
+
+2000-05-09 18:51 +0000  sds  <sds>  (ceec93cc254a)
+
+	* src/port/sys.lisp:
+	(class-slot-list): added the argument to `not-implemented'
+
+2000-05-09 18:49 +0000  sds  <sds>  (3755440df2ea)
+
+	* src/port/ext.lisp:
+	(code): `proc' is not necessarily a symbol
+
+2000-05-08 17:11 +0000  sds  <sds>  (d65b99dc986c)
+
+	* src/port/net.lisp:
+	(socket-host/port): CLISP: use lisp:socket-stream-peer (thanks Don)
+
+2000-05-02 14:33 +0000  sds  <sds>  (a78a5564a082)
+
+	* src/port/net.lisp:
+	export `hostent' and `servent' accessors
+
+2000-05-01 20:14 +0000  sds  <sds>  (840570196284)
+
+	* src/cllib/card.lisp, src/cllib/date.lisp, src/cllib/datedl.lisp,
+	src/cllib/fileio.lisp, src/cllib/fin.lisp, src/cllib/geo.lisp,
+	src/cllib/gnuplot.lisp, src/cllib/gq.lisp, src/cllib/iter.lisp,
+	src/cllib/list.lisp, src/cllib/log.lisp, src/cllib/math.lisp,
+	src/cllib/miscprint.lisp, src/cllib/rpm.lisp, src/cllib/stat.lisp,
+	src/cllib/symb.lisp, src/cllib/tilsla.lisp, src/cllib/url.lisp,
+	src/port/net.lisp:
+	fixed values declaration
+
+2000-04-27 23:35 +0000  sds  <sds>  (fc4911291d6d)
+
+	* src/port/net.lisp:
+	(socket-accept): `bin' is now a keyword; new keyword arg `wait'
+
+2000-04-19 16:49 +0000  sds  <sds>  (fa9075d553bc)
+
+	* src/port/proc.lisp:
+	support CormanLisp
+
+2000-04-19 16:39 +0000  sds  <sds>  (514211989b81)
+
+	* src/port/net.lisp:
+	(resolve-host-ipaddr): fixed for LispWorks (defstruct socket-
+	server): added slot `port' (socket-server-host/port): replaces
+	`socket-server-host' and `socket-server-port'
+
+2000-04-19 16:34 +0000  sds  <sds>  (4bef67a3cbee)
+
+	* src/port/sys.lisp:
+	(variable-special-p): fixed for LispWorks (class-slot-list, chdir,
+	default-directory): support CormanLisp
+
+2000-04-19 16:32 +0000  sds  <sds>  (0c28e029787b)
+
+	* src/port/ext.lisp:
+	(gc): support CormanLisp (quit): support CormanLisp and LispWorks
+
+2000-04-10 18:48 +0000  sds  <sds>  (d34524d93aa5)
+
+	* src/port/sys.lisp:
+	(arglist): support LispWorks
+
+2000-04-10 18:42 +0000  sds  <sds>  (279c5e11a9b4)
+
+	* src/port/net.lisp:
+	(socket-host/port): replaces `socket-host' and `socket-port'
+	(resolve-host-ipaddr): fixed for GCL and LispWorks (socket-string):
+	print socket as host:port (socket-server &c): support LispWorks
+
+2000-04-10 18:35 +0000  sds  <sds>  (e6b08e4793e1)
+
+	* src/port/shell.lisp:
+	(run-prog): support Liquid (pipe-output, pipe-input): fixed for
+	LispWorks
+
+2000-04-07 17:02 +0000  sds  <sds>  (546e9f444e6d)
+
+	* src/port/sys.lisp:
+	use abbreviated package names consistently
+
+2000-04-06 14:42 +0000  sds  <sds>  (5c2335e29df1)
+
+	* src/port/proc.lisp:
+	(giveup-lock): support CMUCL
+
+2000-04-05 23:58 +0000  sds  <sds>  (dee5bc69627b)
+
+	* src/port/gray.lisp:
+	support LispWorks
+
+2000-04-05 23:56 +0000  sds  <sds>  (f6e3d32efdf5)
+
+	* src/port/proc.lisp:
+	Thanks John Wiseman. More work is needed for Genera&Lucid. (process-
+	yield): new fuctions (make-lock, get-lock, giveup-lock): new
+	functions (with-lock): new macro
+
+2000-04-05 23:37 +0000  sds  <sds>  (ecdc850a995a)
+
+	* src/port/sys.lisp:
+	(variable-special-p): support lispworks
+
+2000-04-04 22:14 +0000  sds  <sds>  (8c2ffebeac43)
+
+	* src/port/net.lisp:
+	(socket-server-host): fixed for CMUCL
+
+2000-04-03 21:33 +0000  sds  <sds>  (0fa12497ae34)
+
+	* src/port/net.lisp:
+	(socket-accept): allegro: use `bin'
+
+2000-04-03 21:09 +0000  sds  <sds>  (1f158da7e188)
+
+	* src/port/sys.lisp:
+	(arglist, chdir): allegro has EXCL, not EXT
+
+2000-04-03 20:43 +0000  sds  <sds>  (e3ab70968323)
+
+	* src/port/proc.lisp:
+	(with-timeout): fixed call to `with-gensyms'
+
+2000-03-30 17:11 +0000  sds  <sds>  (5687e9a40f43)
+
+	* src/port/ext.lisp:
+	(eof-p): new function
+
+2000-03-29 15:32 +0000  sds  <sds>  (0832d92b5eb5)
+
+	* src/port/net.lisp:
+	cannot use `call-next-method' in `define-condition' :report.
+	(report-network-condition): new function (network, timeout): use it
+
+2000-03-28 18:24 +0000  sds  <sds>  (5b88dacba976)
+
+	* src/port/net.lisp:
+	(servent): new defstruct (socket-service-port): return it
+
+2000-03-28 18:02 +0000  sds  <sds>  (8257912f69dd)
+
+	* src/port/net.lisp:
+	(resolve-host-ipaddr): in clisp, it's `addrtype'
+
+2000-03-24 00:23 +0000  sds  <sds>  (a81a9f398817)
+
+	* src/port/shell.lisp:
+	comment
+
+2000-03-23 04:06 +0000  sds  <sds>  (3c54f12569d7)
+
+	* src/port/sys.lisp:
+	(+whitespace+): moved to cllib/withtype
+
+2000-03-22 23:54 +0000  sds  <sds>  (b1efb82831ba)
+
+	* src/port/shell.lisp, src/port/sys.lisp:
+	use package prefixes for CMU CL and GCL
+
+2000-03-22 23:51 +0000  sds  <sds>  (d439cc246f30)
+
+	* src/port/ext.lisp:
+	(quit): optional error code argument
+
+2000-03-09 20:27 +0000  sds  <sds>  (60cacb9c2172)
+
+	* src/port/gray.lisp: new file.
+	* src/port/Makefile, src/port/gray.lisp, src/port/port.html,
+	src/port/port.system:
+	Gray streams unification
+
+2000-03-08 20:51 +0000  sds  <sds>  (e18075983a4b)
+
+	* src/port/net.lisp:
+	(socket-server-host, socket-server-port): exported
+
+2000-03-07 20:28 +0000  sds  <sds>  (6a9b6b4e96a0)
+
+	* src/port/net.lisp:
+	(socket-server-host, socket-server-port): new functions (socket-
+	host, socket-accept): fixed for CMUCL
+
+2000-03-03 22:01 +0000  sds  <sds>  (895864246763)
+
+	* src/port/ext.lisp, src/port/net.lisp, src/port/proc.lisp,
+	src/port/shell.lisp, src/port/sys.lisp:
+	fixed provide statements
+
+2000-03-01 20:01 +0000  sds  <sds>  (a021ea0c7e08)
+
+	* src/port/sys.lisp:
+	(arglist, class-slot-list): new functions
+
+2000-03-01 16:02 +0000  sds  <sds>  (ce8d8612f79f)
+
+	* src/port/sys.lisp:
+	(variable-special-p): new function
+
+2000-02-18 21:16 +0000  sds  <sds>  (441997180198)
+
+	* src/port/port.system, src/port/proc.lisp: new file.
+	* src/port/Makefile, src/port/ext.lisp, src/port/net.lisp,
+	src/port/port.system, src/port/proc.lisp, src/port/shell.lisp,
+	src/port/sys.lisp:
+	in-package :port now; make system works
+
+2000-02-10 17:55 +0000  sds  <sds>  (74030ddd8230)
+
+	* src/port/net.lisp:
+	(hostent): new defstruct (resolve-host-ipaddr): return a `hostent'
+	instance instead of multiple values.
+
+2000-02-10 17:53 +0000  sds  <sds>  (821eee61f573)
+
+	* src/port/ext.lisp:
+	(+eof+): new constant (for `string-tokens') (string-tokens): new
+	function (for net)
+
+1999-11-24 17:07 +0000  sds  <sds>  (a8d28e3d61f4)
+
+	* src/port/ext.lisp, src/port/net.lisp, src/port/shell.lisp,
+	src/port/sys.lisp: new file.
+	* src/port/ext.lisp, src/port/net.lisp, src/port/shell.lisp,
+	src/port/sys.lisp:
+	Cross-implementation Portability System
+
